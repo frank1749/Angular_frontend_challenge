@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login/login.component';
 import { HomeComponent } from './home/home/home.component';
 import { RegistroProyectoComponent } from './constructor/registro-proyecto/registro-proyecto.component';
 import { ListaProyectosComponent } from './constructor/lista-proyectos/lista-proyectos.component';
+import { SessionStorageGuard } from './guard/session-storage.guard';
 
 const routes: Routes = [
   { 
@@ -12,15 +13,18 @@ const routes: Routes = [
   },
   { 
     path: 'home', 
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [SessionStorageGuard]
   },
   { 
     path: 'crear-proyecto', 
-    component: RegistroProyectoComponent
+    component: RegistroProyectoComponent,
+    canActivate: [SessionStorageGuard]
   },
   { 
     path: 'lista-proyectos', 
-    component: ListaProyectosComponent
+    component: ListaProyectosComponent,
+    canActivate: [SessionStorageGuard]
   },    
   {
     path: '',

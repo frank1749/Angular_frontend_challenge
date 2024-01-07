@@ -8,9 +8,17 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  infoUser: any = {};
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    const infouserString = localStorage.getItem('infoUser');
+    if (infouserString !== null) {
+      // Parsear la cadena JSON
+      this.infoUser = JSON.parse(infouserString);
+      console.log('infoUser', this.infoUser);
+    }
   }
 
   closeSesion(): void {
