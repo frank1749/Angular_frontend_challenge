@@ -7,8 +7,8 @@
                 <img src="assets/imgs/Logo-Licify.jpg" class="card-img-top" alt="Logo-Licify">
                 <div class="card-body">
                     <h4 class="card-title">{{ project.nombreProyecto }}</h4>
-                    <p class="card-text"><i>Fecha de inicio del proyecto: {{ project.fechaInicial }}</i></p>
-                    <p class="card-text"><i>Fecha de cierre del proyecto: {{ project.fechaFinal }}</i></p>
+                    <p class="card-text"><i>Fecha de inicio del proyecto: {{ project.fechaInicial | amTimeAgo }}</i></p>
+                    <p class="card-text"><i>Fecha de cierre del proyecto: {{ project.fechaFinal | amTimeAgo }}</i></p>
                     <ul class="list-group list-group-flush">
                         <!-- Lista de Ítems del Proyecto con Valores Unitarios -->
                         <form>

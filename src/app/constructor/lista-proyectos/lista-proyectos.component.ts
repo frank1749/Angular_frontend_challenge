@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import Swal from 'sweetalert2';
+import * as moment from 'moment';
+import 'moment/locale/es';
 
 @Component({
   selector: 'app-lista-proyectos',
@@ -12,7 +14,9 @@ export class ListaProyectosComponent implements OnInit {
 
   projects: any = [];
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService) { }
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService) { 
+    moment.locale('es');
+  }
 
   ngOnInit(): void {
     this.getProjects();

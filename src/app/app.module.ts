@@ -10,6 +10,7 @@ import { ListaProyectosComponent } from './constructor/lista-proyectos/lista-pro
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/header/header/header.component';
 import { FooterComponent } from './shared/footer/footer/footer.component';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FooterComponent } from './shared/footer/footer/footer.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MomentModule,
     ReactiveFormsModule 
   ],
   providers: [],
