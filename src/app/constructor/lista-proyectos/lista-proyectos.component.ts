@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista-proyectos',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaProyectosComponent implements OnInit {
 
-  constructor() { }
+  projects: any = [];
+
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.getProjects();
+  }
+
+  getProjects(): void {
+    this.apiService.getProjects().subscribe(
+      res => {
+        console.log(res);
+        this.projects = res;
+      },
+      err =>{
+        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.error.msg
+        });
+      }
+    );
   }
 
 }
