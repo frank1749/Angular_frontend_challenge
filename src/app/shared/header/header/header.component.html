@@ -1,0 +1,23 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+        <a class="navbar-brand text-white mx-3" href="#">Licify Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item mx-3">
+                    <a [routerLink]="['/crear-proyecto']" class="nav-link text-white">Crear proyectos</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a [routerLink]="['/lista-proyectos']" class="nav-link text-white">Listar proyectos</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link text-danger" href="#">Cerrar sesión <span class="close" aria-label="Close"><span
+                                aria-hidden="true">×</span></span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

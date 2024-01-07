@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-3">
+            <div class="card">
+                <img src="assets/imgs/Logo-Licify.jpg" class="card-img-top" alt="Logo-Licify">
+                <div class="card-body">
+                    <h4 class="card-title">Título del proyecto</h4>
+                    <p class="card-text"><i>Fecha de inicio del proyecto:</i></p>
+                    <p class="card-text"><i>Fecha de cierre del proyecto:</i></p>
+                    <ul class="list-group list-group-flush">
+                        <!-- Lista de Ítems del Proyecto con Valores Unitarios -->
+                        <form>
+                            <div class="form-group">
+                                <h4>Ítems del Proyecto</h4>
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Ítem</th>
+                                                <th>Valor Unitario Actual</th>
+                                                <th>Nuevo Valor Unitario</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Ítem 1</td>
+                                                <td>$X</td>
+                                                <td>
+                                                    <input type="text" class="form-control" name="nuevoValorItem1"
+                                                        placeholder="Nuevo Valor Unitario">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ítem 2</td>
+                                                <td>$Y</td>
+                                                <td>
+                                                    <input type="text" class="form-control" name="nuevoValorItem2"
+                                                        placeholder="Nuevo Valor Unitario">
+                                                </td>
+                                            </tr>
+                                            <!-- Agrega más filas según sea necesario -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Botón de Enviar Aplicación -->
+                            <button type="submit" class="btn btn-primary">Enviar Aplicación</button>
+                        </form>
+                    </ul>
+                    <!-- <form>
+                        <div class="form-group">
+                            <label for="custom-value">Valor unitario personalizado</label>
+                            <textarea class="form-control" id="custom-value" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

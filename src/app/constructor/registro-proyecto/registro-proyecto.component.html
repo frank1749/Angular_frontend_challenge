@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-3">
+            <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+                <div class="form-group mt-3">
+                    <label for="nombreProyecto">Nombre del proyecto:</label>
+                    <input type="text" class="form-control" formControlName="nombreProyecto"
+                        placeholder="Ingresa el nombre del proyecto" required="">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="fechaInicial">Fecha inicial:</label>
+                    <input type="date" class="form-control" formControlName="fechaInicial" required="">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="fechaFinal">Fecha final:</label>
+                    <input type="date" class="form-control" formControlName="fechaFinal" required="">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="valorUnitario">Valor unitario:</label>
+                    <!-- <input type="number" class="form-control" formControlName="valorUnitario" placeholder="Ingresa el valor unitario"
+                        required=""> -->
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Crear proyecto</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

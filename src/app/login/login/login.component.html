@@ -1,0 +1,31 @@
+<div class="container text-center">
+    <h1 class="mt-5">Bienvenido al login de Licify</h1>
+    <p>Por favor inicie sesión para gestionar sus proyectos :)</p>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Iniciar sesión</div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" formControlName="email" required>
+                            <div class="invalid-feedback">Ingrese un correo electrónico válido</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" class="form-control" id="password" formControlName="password"
+                                required>
+                            <div class="invalid-feedback">Ingrese una contraseña válida</div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
