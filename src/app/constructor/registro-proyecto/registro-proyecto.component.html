@@ -18,11 +18,23 @@
                     <input type="date" class="form-control" formControlName="fechaFinal" required="">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="valorUnitario">Valor unitario:</label>
-                    <!-- <input type="number" class="form-control" formControlName="valorUnitario" placeholder="Ingresa el valor unitario"
-                        required=""> -->
+                    <h4>Ítems del Proyecto</h4>
+
+                    <div formArrayName="items">
+                        <div *ngFor="let item of items.controls; let i = index">
+                            <div [formGroupName]="i">
+                                <input formControlName="item" placeholder="Item">
+                                <input formControlName="valorUnitarioActual" placeholder="Valor unitario actual">
+                                <button type="button" (click)="removeItem(i)">Eliminar ítem</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="button" (click)="addItem()">Agregar ítem</button>
+
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Crear proyecto</button>
+
+                <button type="submit" [disabled]="form.invalid" class="btn btn-primary mt-3">Crear proyecto</button>
             </form>
         </div>
     </div>
