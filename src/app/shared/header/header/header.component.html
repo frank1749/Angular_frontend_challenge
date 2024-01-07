@@ -14,8 +14,9 @@
                     <a [routerLink]="['/lista-proyectos']" class="nav-link text-white">Listar proyectos</a>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link text-danger" href="#">Cerrar sesión <span class="close" aria-label="Close"><span
-                                aria-hidden="true">×</span></span></a>
+                    <a class="nav-link text-danger" style="cursor: pointer;" (click)="closeSesion()">
+                        Cerrar sesión <span class="close" aria-label="Close"><span ria-hidden="true">×</span></span>
+                    </a>
                 </li>
             </ul>
         </div>

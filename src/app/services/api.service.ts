@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { ProjectDataInterface } from '../interfaces/project-data.interface';
+import { ProjectDataInterface, UserDataInterface } from '../interfaces/project-data.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,10 @@ export class ApiService {
 
   getProjects() {
     return this.http.get(`${this.apiUrl}/services/projects`);
+  }
+
+  initSession(userData: UserDataInterface) {
+    return this.http.post(`${this.apiUrl}/auth/login`, userData);
   }
   
 }

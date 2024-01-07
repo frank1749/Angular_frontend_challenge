@@ -7,4 +7,9 @@ export interface ProjectDataInterface {
         valorUnitarioActual: number;
         valorUnitarioPropuesto?: number;
     }[];
+};
+
+export interface UserDataInterface {
+    email: string;
+    password: Date;
 }
