@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Notas personales
+
+En concordancia con las mejores prácticas en Angular, he implementado un sistema de inicio de sesión donde la persistencia de la sesión depende del almacenamiento local (LocalStorage). Además, he integrado la librería SweetAlert2 para mejorar la interactividad de la aplicación y he empleado Bootstrap para el diseño.
+
+En el archivo .env, se ha definido una variable que almacena el endpoint para el backend local desarrollado en Express. Para estructurar la aplicación de manera eficiente, se han utilizado servicios, interfaces y guards en Angular. Los servicios permiten encapsular la lógica del negocio y centralizar la gestión de datos, mejorando la modularidad del código.
