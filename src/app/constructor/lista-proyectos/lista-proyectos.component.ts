@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProjectDataInterface, ApplicationDataInterface } from 'src/app/interfaces/project-data.interface';
 import { ApiService } from '../../services/api.service';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
 import 'moment/locale/es';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-lista-proyectos',
@@ -13,18 +14,20 @@ import 'moment/locale/es';
 export class ListaProyectosComponent implements OnInit {
 
   projects: any = [];
+  infoUser: any = {};
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService) { 
+  constructor(private apiService: ApiService) { 
     moment.locale('es');
   }
 
   ngOnInit(): void {
     this.getProjects();
+    this.getDataUser();
   }
 
   getProjects(): void {
     this.apiService.getProjects().subscribe(
-      res => {
+      (res: any) => {
         console.log(res);
         this.projects = res;
       },
@@ -37,6 +40,52 @@ export class ListaProyectosComponent implements OnInit {
         });
       }
     );
+  }
+
+  getDataUser(): void{
+    const infouserString = localStorage.getItem('infoUser');
+    if (infouserString !== null) {
+      // Parsear la cadena JSON
+      this.infoUser = JSON.parse(infouserString);
+    }
+  }
+
+  onButtonClick(projectItems: ProjectDataInterface): void {
+    console.log('projectItems', projectItems);
+    const dataForAPlication: ApplicationDataInterface = {
+      idUsuario: this.infoUser.id,
+      nombreUsuario: this.infoUser.name,
+      emailUsuario: this.infoUser.email,
+      tipoUsuario: this.infoUser.type,
+      idProyecto: projectItems._id
+    };
+    console.log('dataForAPlication', dataForAPlication);
+    if(this.infoUser.type === environment.typeUser.pro) {
+      this.apiService.createApplication(dataForAPlication).subscribe(
+        res => {
+          Swal.fire({
+            title: "Buen trabajo!",
+            text: "Aplicación creada exitosamente!",
+            icon: "success"
+          });
+          this.getProjects();
+        },
+        err =>{
+          console.log(err);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: err.error.msg
+          });
+        }
+      );
+    }else{
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Solo el usuario Constructor puede crear proyectos"
+      });
+    }
   }
 
 }

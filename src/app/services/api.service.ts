@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { ProjectDataInterface, UserDataInterface } from '../interfaces/project-data.interface';
+import { UserDataInterface, ProjectDataInterface, ApplicationDataInterface } from '../interfaces/project-data.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  initSession(userData: UserDataInterface) {
+    return this.http.post(`${this.apiUrl}/auth/login`, userData);
+  }
+
   createProject(projectData: ProjectDataInterface) {
     return this.http.post(`${this.apiUrl}/services/projects`, projectData);
   }
@@ -19,8 +23,8 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/services/projects`);
   }
 
-  initSession(userData: UserDataInterface) {
-    return this.http.post(`${this.apiUrl}/auth/login`, userData);
+  createApplication(applicationData: ApplicationDataInterface) {
+    return this.http.post(`${this.apiUrl}/services/applications`, applicationData);
   }
   
 }
