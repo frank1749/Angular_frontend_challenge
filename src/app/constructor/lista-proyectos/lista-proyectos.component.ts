@@ -16,7 +16,7 @@ export class ListaProyectosComponent implements OnInit {
   projects: any = [];
   infoUser: any = {};
 
-  constructor(private apiService: ApiService) { 
+  constructor(private apiService: ApiService) {
     moment.locale('es');
   }
 
@@ -31,7 +31,7 @@ export class ListaProyectosComponent implements OnInit {
         console.log(res);
         this.projects = res;
       },
-      err =>{
+      err => {
         console.log(err);
         Swal.fire({
           icon: "error",
@@ -42,7 +42,7 @@ export class ListaProyectosComponent implements OnInit {
     );
   }
 
-  getDataUser(): void{
+  getDataUser(): void {
     const infouserString = localStorage.getItem('infoUser');
     if (infouserString !== null) {
       // Parsear la cadena JSON
@@ -51,7 +51,6 @@ export class ListaProyectosComponent implements OnInit {
   }
 
   onButtonClick(projectItems: ProjectDataInterface): void {
-    console.log('projectItems', projectItems);
     const dataForAPlication: ApplicationDataInterface = {
       idUsuario: this.infoUser.id,
       nombreUsuario: this.infoUser.name,
@@ -59,18 +58,23 @@ export class ListaProyectosComponent implements OnInit {
       tipoUsuario: this.infoUser.type,
       idProyecto: projectItems._id
     };
-    console.log('dataForAPlication', dataForAPlication);
-    if(this.infoUser.type === environment.typeUser.pro) {
+    if (this.infoUser.type === environment.typeUser.pro) {
       this.apiService.createApplication(dataForAPlication).subscribe(
         res => {
+          const dataFinalItems = {
+            idProyecto: projectItems._id,
+            dataItems: projectItems.items
+          }
+          this.updateItemsFromProject(dataFinalItems);
           Swal.fire({
             title: "Buen trabajo!",
             text: "Aplicación creada exitosamente!",
             icon: "success"
+          }).then(() => {
+            this.getProjects();
           });
-          this.getProjects();
         },
-        err =>{
+        err => {
           console.log(err);
           Swal.fire({
             icon: "error",
@@ -79,13 +83,24 @@ export class ListaProyectosComponent implements OnInit {
           });
         }
       );
-    }else{
+    } else {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Solo el usuario Constructor puede crear proyectos"
       });
     }
+  }
+
+  updateItemsFromProject(dataFinalItems: any): void {
+    this.apiService.updateItemsProject(dataFinalItems).subscribe(
+      (res: any) => {
+        console.log('result update', res)
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }

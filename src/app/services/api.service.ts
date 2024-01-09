@@ -19,6 +19,10 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/services/projects`, projectData);
   }
 
+  updateItemsProject(dataFinalItems: any) {
+    return this.http.put(`${this.apiUrl}/services/projects`, dataFinalItems);
+  }
+
   getProjects() {
     return this.http.get(`${this.apiUrl}/services/projects`);
   }
